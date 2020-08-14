@@ -1,7 +1,7 @@
 server:
   port: 9000
 
-zak:
+develop-collect:
   pay:
     domain: 17o04f3737.iask.in
     port: 80
@@ -26,5 +26,3 @@ zak:
       sign-type: RSA2
       qr-code-width: 200
       qr-code-height: 200
-
-

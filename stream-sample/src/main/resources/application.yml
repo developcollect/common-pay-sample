@@ -27,7 +27,8 @@ spring:
           payInput:
             consumer:
               autoBindDlq: true
-zak:
+
+develop-collect:
   pay:
     domain: 17o04f3737.iask.in
     port: 80
