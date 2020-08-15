@@ -53,7 +53,7 @@ public class AliPayController {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
         OrderAdapter orderAdapter = new OrderAdapter(order);
-        String payForm = PayUtil.payForm(orderAdapter);
+        String payForm = PayUtil.payPcForm(orderAdapter);
 
         Map map = new HashMap();
         map.put("payForm", payForm);
@@ -65,7 +65,7 @@ public class AliPayController {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
         OrderAdapter orderAdapter = new OrderAdapter(order);
-        String payForm = PayUtil.payFormAccessUrl(orderAdapter);
+        String payForm = PayUtil.payPcFormAccessUrl(orderAdapter);
 
         Map map = new HashMap();
         map.put("payForm", payForm);
@@ -117,6 +117,30 @@ public class AliPayController {
 
         Map map = new HashMap();
         map.put("payForm", payResponse);
+        return map;
+    }
+
+    @GetMapping("/alipay7")
+    public Map alipay7() {
+        LocalOrder order = orderService.getOrder();
+        order.setPayType(PayPlatform.ALI_PAY);
+        OrderAdapter orderAdapter = new OrderAdapter(order);
+        String payForm = PayUtil.payWapForm(orderAdapter);
+
+        Map map = new HashMap();
+        map.put("payForm", payForm);
+        return map;
+    }
+
+    @GetMapping("/alipay8")
+    public Map alipay8() {
+        LocalOrder order = orderService.getOrder();
+        order.setPayType(PayPlatform.ALI_PAY);
+        OrderAdapter orderAdapter = new OrderAdapter(order);
+        String payForm = PayUtil.payWapFormAccessUrl(orderAdapter);
+
+        Map map = new HashMap();
+        map.put("payForm", payForm);
         return map;
     }
 }

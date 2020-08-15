@@ -53,7 +53,7 @@ public class AliPayController {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
         OrderAdapter orderAdapter = new OrderAdapter(order);
-        String payForm = PayUtil.payForm(orderAdapter);
+        String payForm = PayUtil.payPcForm(orderAdapter);
 
         Map map = new HashMap();
         map.put("payForm", payForm);
@@ -65,7 +65,7 @@ public class AliPayController {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
         OrderAdapter orderAdapter = new OrderAdapter(order);
-        String payForm = PayUtil.payFormAccessUrl(orderAdapter);
+        String payForm = PayUtil.payPcFormAccessUrl(orderAdapter);
 
         Map map = new HashMap();
         map.put("payForm", payForm);

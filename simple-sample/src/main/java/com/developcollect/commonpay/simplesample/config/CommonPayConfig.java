@@ -22,7 +22,7 @@ public class CommonPayConfig {
 
 
     @Bean
-    public Function<IOrder, String> aliPayReturnUrlGenerator() {
+    public Function<IOrder, String> aliPayPcReturnUrlGenerator() {
         return o -> String.format("%s/a.html?o=%s&a=%s", commonPayProperties.getUrlPrefix(), o.getOutTradeNo(), o.getTotalFee());
     }
 
