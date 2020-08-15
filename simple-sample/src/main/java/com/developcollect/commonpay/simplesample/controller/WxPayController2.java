@@ -2,6 +2,7 @@ package com.developcollect.commonpay.simplesample.controller;
 
 import com.developcollect.commonpay.PayPlatform;
 import com.developcollect.commonpay.PayUtil;
+import com.developcollect.commonpay.pay.PayWxJsResult;
 import com.developcollect.commonpay.pay.RefundResponse;
 import com.developcollect.commonpay.simplesample.entity.LocalOrder;
 import com.developcollect.commonpay.simplesample.entity.LocalRefund;
@@ -30,6 +31,8 @@ public class WxPayController2 {
 
     private final IOrderService orderService;
     private final IRefundService refundService;
+
+    private String openId = "owKPNwzDznbnyLnEQwJH35KOIRrg";
 
 
 
@@ -66,6 +69,30 @@ public class WxPayController2 {
 
         Map map = new HashMap();
         map.put("payForm", payForm);
+        return map;
+    }
+
+    @GetMapping("/wxpay6")
+    public Map wxpay6() {
+        LocalOrder order = orderService.getOrderSpecifyAmount(1);
+        order.setPayType(PayPlatform.WX_PAY);
+        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayWxJsResult payWxJsResult = PayUtil.payWxJs(orderAdapter, openId);
+
+        Map map = new HashMap();
+        map.put("payForm", payWxJsResult);
+        return map;
+    }
+
+    @GetMapping("/wxpay7")
+    public Map wxpay7() {
+        LocalOrder order = orderService.getOrderSpecifyAmount(1);
+        order.setPayType(PayPlatform.WX_PAY);
+        OrderAdapter orderAdapter = new OrderAdapter(order);
+        String s = PayUtil.payWapFormAccessUrl(orderAdapter);
+
+        Map map = new HashMap();
+        map.put("payForm", s);
         return map;
     }
 
