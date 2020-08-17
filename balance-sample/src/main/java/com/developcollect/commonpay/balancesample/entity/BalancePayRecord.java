@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * 余额支付记录
  *
- * @author Zhu Kaixiao
+ * @author zak
  * @version 1.0
  */
 @Data
