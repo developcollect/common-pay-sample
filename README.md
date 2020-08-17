@@ -10,3 +10,4 @@ common-pay-sample就是[common-pay](https://github.com/developcollect/common-pay
 
 * **simple-sample**：简单样例，只有基础的配置和使用
 * **stream-sample**：基于spring cloud stream的消息通知样例，只配了RabbitMQ
+* **balance-sample**：本地余额支付样例
