@@ -30,27 +30,28 @@ spring:
 
 develop-collect:
   pay:
-    domain: 17o04f3737.iask.in
+    domain: www.example.com
     port: 80
     notify-endpoint:
       enabled: true
     resource-endpoint:
       enabled: true
     wxpay:
-      appid: wxc596191fde33119f
-      key: ccon08SVO4Ht7zLgiXjzhEsjQKawweo8
-      mch-id: 1264316901
+      appid: your wx appid
+      key: your wx key
+      mch-id: your wx mchId
       qr-code-width: 500
       qr-code-height: 500
       cert-location: classpath:apiclient_cert.p12
 
     alipay:
       use-sandbox: true
-      appid: 2016090900472312
-      private-key: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCbvtxmmxIVkGTvhGFgx5Q0LhhjS8Oiym9ukAglHwKQkYqKCAVip+M8cb8w6GEfr96Z3WN17Io15W3mniuYyWay32Tyno91Kqgrh4NRBA1ndglSI6ErtvUgu/6+gx7gy5Q2hSgPZbajjr0qXuQzdD/vjUk0hn9T6N5ZBrjRv63oZM+p5j7ty/suY2M012NMvcE84mZO2apCoJHP0gBLtIGEseySHTmNH9iVFlrYPUEBaDO5laTC16BXO5Zz8k63/VRYzycc7Kb5XJLmxgFY8MotdqKEkpPA5E47IyHwZCq9Mwk2Tst8YPkFswS0oC0AfAfeYkxcnm63he9w4dD/ry6zAgMBAAECggEAM9Inp4RFWiN3UjKr6/W8HDiSKMfWyl2tAg6uhxtwUQX8IL1WfWL7OutmADHxzwdHe86r/1q7Cf/St389ZlLs9utZvViAxy1wUzt9uAEvLJObulbck50GpuOmeWFLbuSN5i4cDDN9t6IQ0v5L08sEUwKhrvZpe1PqV5ji+fdbOA1+CXPQrDmBFJFdRhn40khTC/NrRRUjuEY86JjpLr4csnF/YKOLTv9TbzCehGT6D7mKgNI9Aw//4es2Jucv1xnR7awFg3JCyPUvBKv/JGeb6N09wAyged/H+bGksjH9eJTvBK1BYkhZ9xVO9rx98tLsqHXIKM4afsh8GDQ5jaLt8QKBgQDPeQCbvHHApXQ+sT43+KIIquuTqHEV4QQJSaarWARf7kZ/7ZzzT2N7euataVo3fzywHOd6YM1jqplHlVHB2AzwHf9zmvA9DQilwKNsNOtw3UArRkH6yomVKrROY5EJ9+bh6vRNzXkSFvTAU/p8AbNV8ZtkiYpRMtOlEM9UJfPPvQKBgQDALI4UdXEVJ3zkU51QeHcKrPvhUapKQzSlFtSNnNg3vveHwpdhDHfALk7Kp1CQoFidt6BchT9uW8fB61BhsSvajN+tULpiy2LWF/D+14nXcO4YCo+cbnNO2QxxB+XMYK6P2rfAfRW7UFVt6ah6OZcuqB3wFR/E/Trotv2X8qNnLwKBgChgMgAc0j5ddJvmvmcCGfZ53NKliyxo1/I+xRK/VEqfAlVPFqY7Iu8a4d2JjScTuenEFkA4qn/k6WOG6ZxBwXLRQ69pzarz6GTpcmRSgCc8x4okaB64X8IJx4Eh204HUoVQxi6F+DPPB96N+Uc8xXvKQyVzptlafNm4xcBoimQ5AoGAYdhNnu0M3pB0bmyENGyhb7YTqO1DnvwI2eV943xwOjHpJh5VpPwMHLV3OIdn5bs+Y08TPwg4+5+PXZTKIHNsuKHxYPUxcQvNDuSxt49Wh3LgRy1ZYXR7ETJBu2sh/aVcO7JIzKDjZ7PHS2ckeNbJut+uHoci3dFxJPvGso6/09ECgYArEWHva1sLdg7+Gsvg5SeHmRCOC0iFSwyFYFMRxh9RHRtb93tdbCewGo+CVyRldTYatj1PNSPmK8ep+IgMXJ9GmmsSdYSKgLlUurGsXlq56mJbLdqgLnN4qDZjWAFeMKEde35DQswiZGq51ZMkl3zrsEtRLIEiObzwGjIRcGM7lg==
-      public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqKWv5VE+D0u9V6A203BjaJNYghDUMi51VIC4CTET4pYS2nWOA5M1wUxThcAMpqnq+0aZuvdM4aBKcI+Zdpne27y/2pZR58bDqTWPfiMnYia/E3GR4nDz7Sf5naZvYTgxVjvgdp2hnRaTNSUSy0JVVLzM4InCBlwnhlRSbnnLHlFz0rN2Aa3hTX/MhJuYAb58jD9et6ZpYcMpOz62A67Nojd5OpsBYnIdbZgeew7hgEJ2MSnwGacPYPSIwUA+ArGQL9PcdjAEUY8ED1ZwHATnifqcdNYlH0uxMvYucALHJLFOCF1/CM8DTL63CXju1bJ8vJWhT8KqsmF0mNyu8OmF3wIDAQAB
+      appid: your ali appid
+      private-key: your ali private key
+      public-key: your ali public key
       charset: UTF-8
       sign-type: RSA2
       qr-code-width: 200
       qr-code-height: 200
+
 
