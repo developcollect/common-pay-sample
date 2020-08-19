@@ -8,6 +8,7 @@
         <module>stream-sample</module>
         <module>balance-sample</module>
         <module>customize-config-sample</module>
+        <module>customize-config-sample2</module>
     </modules>
 
     <parent>

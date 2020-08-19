@@ -1,6 +1,8 @@
 package com.developcollect.commonpay.customizeconfigsample.config;
 
 import cn.hutool.extra.qrcode.QrCodeUtil;
+import com.developcollect.commonpay.notice.IPayBroadcaster;
+import com.developcollect.commonpay.notice.IRefundBroadcaster;
 import com.developcollect.commonpay.pay.IOrder;
 import com.developcollect.commonpay.pay.PayResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -13,9 +15,17 @@ import java.util.function.Function;
 
 /**
  * 支付组件配置
- * 示范如何覆盖common-pay已有的组件, 和添加原先没有的组件
+ * 示范如何覆盖common-pay已有的组件, 和添加原先没有的组件, 以下示范的组件在实际使用中按需求覆盖即可, 并没有限制一定要全部覆盖
+ *
+ *
+ * 具体有哪些组件可以替换和添加, 可以查看
+ * {@link com.developcollect.commonpay.autoconfig.CommonPayAutoConfig.DefaultCommonPayConfigurer}中有注入哪些组件
+ *
+ * 注意: 组件注入是有限制bean的名称的, 具体的名称可查看
+ * {@link com.developcollect.commonpay.autoconfig.CommonPayAutoConfig.DefaultCommonPayConfigurer}, 后续会在文档中详细标出
+ *
  * <p>
- * 这里只示范组件替换, 如果需要自己实现配置器, 完全接管配置, 见customize-config2
+ * 这里只示范组件替换, 如果需要自己实现配置器, 完全接管配置, 见customize-config-sample2
  *
  * @author zak
  * @version 1.0
@@ -106,6 +116,32 @@ public class CommonPayConfig {
     /*
      * 微信支付同理
      */
+
+    /**
+     * 支付结果广播器
+     * 默认的广播器是基于spring的事件通知实现的
+     * 通过覆盖广播器, 可以实现MQ广播, RPC通知等等
+     * MQ广播可以参考stream-sample
+     */
+    @Bean
+    IPayBroadcaster payBroadcaster() {
+        return payResponse -> {
+            log.info("支付结果广播: [{}]", payResponse);
+            return true;
+        };
+    }
+
+    /**
+     * 退款结果广播器
+     * 同上
+     */
+    @Bean
+    IRefundBroadcaster refundBroadcaster() {
+        return refundResponse -> {
+            log.info("退款结果广播: [{}]", refundResponse);
+            return true;
+        };
+    }
 
 
 }
