@@ -7,6 +7,7 @@
         <module>simple-sample</module>
         <module>stream-sample</module>
         <module>balance-sample</module>
+        <module>customize-config-sample</module>
     </modules>
 
     <parent>
@@ -22,14 +23,15 @@
     <packaging>pom</packaging>
 
     <name>common-pay-sample</name>
-    <description>Demo project for Spring Boot</description>
+    <url>https://github.com/developcollect/common-pay-sample</url>
+    <description>common-pay示例集</description>
 
 
 
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
-        <common-pay-spring-boot-starter.version>1.8.2</common-pay-spring-boot-starter.version>
+        <common-pay-spring-boot-starter.version>1.8.3</common-pay-spring-boot-starter.version>
     </properties>
 
 

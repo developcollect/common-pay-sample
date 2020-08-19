@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+develop-collect:
+  pay:
+    domain: www.example.com
+    port: 80
+    notify-endpoint:
+      enabled: true
+    resource-endpoint:
+      enabled: true
+    wxpay:
+      appid: your wx appid
+      key: your wx key
+      mch-id: your wx mchId
+      qr-code-width: 500
+      qr-code-height: 500
+      cert-location: classpath:apiclient_cert.p12
+
+    alipay:
+      use-sandbox: true
+      appid: your ali appid
+      private-key: your ali private key
+      public-key: your ali public key
+      charset: UTF-8
+      sign-type: RSA2
+      qr-code-width: 200
+      qr-code-height: 200
