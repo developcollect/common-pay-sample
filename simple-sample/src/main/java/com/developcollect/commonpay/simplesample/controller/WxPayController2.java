@@ -8,7 +8,7 @@ import com.developcollect.commonpay.simplesample.entity.LocalOrder;
 import com.developcollect.commonpay.simplesample.entity.LocalRefund;
 import com.developcollect.commonpay.simplesample.service.IOrderService;
 import com.developcollect.commonpay.simplesample.service.IRefundService;
-import com.developcollect.commonpay.simplesample.service.impl.OrderAdapter;
+import com.developcollect.commonpay.simplesample.service.impl.PayDTO;
 import com.developcollect.commonpay.simplesample.service.impl.RefundAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +40,7 @@ public class WxPayController2 {
     public Map wxpay3() {
         LocalOrder order = orderService.getOrderSpecifyAmount(1L);
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String payForm = PayUtil.payQrCodeAccessUrl(orderAdapter);
 
         Map map = new HashMap();
@@ -52,7 +52,7 @@ public class WxPayController2 {
     public Map wxpay4() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String payForm = PayUtil.payQrCode(orderAdapter);
 
         Map map = new HashMap();
@@ -64,7 +64,7 @@ public class WxPayController2 {
     public Map wxpay5() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String payForm = PayUtil.payQrCodeBase64(orderAdapter);
 
         Map map = new HashMap();
@@ -76,7 +76,7 @@ public class WxPayController2 {
     public Map wxpay6() {
         LocalOrder order = orderService.getOrderSpecifyAmount(1);
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         PayWxJsResult payWxJsResult = PayUtil.payWxJs(orderAdapter, openId);
 
         Map map = new HashMap();
@@ -88,7 +88,7 @@ public class WxPayController2 {
     public Map wxpay7() {
         LocalOrder order = orderService.getOrderSpecifyAmount(1);
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String s = PayUtil.payWapFormAccessUrl(orderAdapter);
 
         Map map = new HashMap();
@@ -104,7 +104,7 @@ public class WxPayController2 {
     ) {
         LocalOrder localOrder = orderService.getOrder(orderCode);
         LocalRefund localRefund = refundService.createRefund(orderCode, amount);
-        OrderAdapter orderAdapter = OrderAdapter.of(localOrder);
+        PayDTO orderAdapter = PayDTO.of(localOrder);
         RefundAdapter refundAdapter = RefundAdapter.of(localRefund);
 
         RefundResponse refundResponse = PayUtil.refundSync(orderAdapter, refundAdapter);
