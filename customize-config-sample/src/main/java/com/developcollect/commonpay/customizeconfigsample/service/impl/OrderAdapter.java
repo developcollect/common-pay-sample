@@ -1,7 +1,7 @@
 package com.developcollect.commonpay.customizeconfigsample.service.impl;
 
 import com.developcollect.commonpay.customizeconfigsample.entity.LocalOrder;
-import com.developcollect.commonpay.pay.IOrder;
+import com.developcollect.commonpay.pay.IPayDTO;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @date 2020/8/7 16:30
  */
 @RequiredArgsConstructor
-public class OrderAdapter implements IOrder<LocalOrder> {
+public class OrderAdapter implements IPayDTO<LocalOrder> {
 
     private final LocalOrder localOrder;
 

@@ -13,6 +13,8 @@ public class LocalRefund {
 
     private String code;
 
+    private String refundNo;
+
     private Long refundAmount;
 
     private Integer payType;

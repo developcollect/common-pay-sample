@@ -3,7 +3,7 @@ package com.developcollect.commonpay.balancesample.config.commonpay;
 
 import com.developcollect.commonpay.autoconfig.CommonPayProperties;
 import com.developcollect.commonpay.balancesample.service.IBalanceService;
-import com.developcollect.commonpay.pay.IOrder;
+import com.developcollect.commonpay.pay.IPayDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ public class CommonPayConfig {
     private CommonPayProperties commonPayProperties;
 
     @Bean
-    Function<IOrder, String> aliPayPcReturnUrlGenerator() {
+    Function<IPayDTO, String> aliPayPcReturnUrlGenerator() {
         return o -> String.format("%s/a.html?o=%s&a=%s", commonPayProperties.getUrlPrefix(), o.getOutTradeNo(), o.getTotalFee());
     }
 

@@ -3,7 +3,7 @@ package com.developcollect.commonpay.streamsample.config;
 
 import com.developcollect.commonpay.autoconfig.CommonPayProperties;
 import com.developcollect.commonpay.notice.IPayBroadcaster;
-import com.developcollect.commonpay.pay.IOrder;
+import com.developcollect.commonpay.pay.IPayDTO;
 import com.developcollect.commonpay.streamsample.config.mq.PaySource;
 import com.developcollect.commonpay.utils.SerializeUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ public class CommonPayConfig {
 
 
     @Bean
-    public Function<IOrder, String> aliPayReturnUrlGenerator() {
+    public Function<IPayDTO, String> aliPayReturnUrlGenerator() {
         return o -> String.format("%s/a.html?o=%s&a=%s", commonPayProperties.getUrlPrefix(), o.getOutTradeNo(), o.getTotalFee());
     }
 

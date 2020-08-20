@@ -1,7 +1,7 @@
 package com.developcollect.commonpay.customizeconfigsample.service.impl;
 
 import com.developcollect.commonpay.customizeconfigsample.entity.LocalRefund;
-import com.developcollect.commonpay.pay.IRefund;
+import com.developcollect.commonpay.pay.IRefundDTO;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
  * @date 2020/8/10 14:33
  */
 @RequiredArgsConstructor
-public class RefundAdapter implements IRefund<LocalRefund> {
+public class RefundAdapter implements IRefundDTO<LocalRefund> {
 
     private final LocalRefund localRefund;
 

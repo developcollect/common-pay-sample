@@ -11,6 +11,6 @@ import com.developcollect.commonpay.balancesample.entity.LocalOrder;
 public interface IBalanceService {
 
 
-    BalancePayRecord pay(LocalOrder localOrder);
+    BalancePayRecord pay(LocalOrder localOrder, String payPassword);
 
 }

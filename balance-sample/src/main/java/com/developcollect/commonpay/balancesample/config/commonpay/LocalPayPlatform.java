@@ -10,6 +10,6 @@ import com.developcollect.commonpay.PayPlatform;
 public interface LocalPayPlatform extends PayPlatform {
 
 
-    int BALANCE_PAY = 99;
+    int BALANCE_PAY = 999;
 
 }

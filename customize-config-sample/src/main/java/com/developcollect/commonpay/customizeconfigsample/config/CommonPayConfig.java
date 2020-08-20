@@ -3,7 +3,7 @@ package com.developcollect.commonpay.customizeconfigsample.config;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.developcollect.commonpay.notice.IPayBroadcaster;
 import com.developcollect.commonpay.notice.IRefundBroadcaster;
-import com.developcollect.commonpay.pay.IOrder;
+import com.developcollect.commonpay.pay.IPayDTO;
 import com.developcollect.commonpay.pay.PayResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -31,6 +31,7 @@ import java.util.function.Function;
  * @version 1.0
  * @date 2020/8/7 16:44
  */
+@SuppressWarnings("JavadocReference")
 @Slf4j
 @Configuration
 public class CommonPayConfig {
@@ -40,7 +41,7 @@ public class CommonPayConfig {
      * 支付宝支付结果异步通知地址生成器
      */
     @Bean
-    Function<IOrder, String> aliPayPayNotifyUrlGenerator() {
+    Function<IPayDTO, String> aliPayPayNotifyUrlGenerator() {
         // 这里要确保域名能正确解析到本机, 否则无法接受通知结果, 这个地址默认是common-pay自动生成的接口, 也可以改成自己的
         return o -> String.format("%s/cPay/alipay", "http://www.baidu.com");
     }
@@ -50,7 +51,7 @@ public class CommonPayConfig {
      * 注意: 这是返回的页面跳转地址, 并不会覆盖结果通知地址
      */
     @Bean
-    Function<IOrder, String> aliPayPcReturnUrlGenerator() {
+    Function<IPayDTO, String> aliPayPcReturnUrlGenerator() {
         return o -> String.format("%s/a.html?o=%s&a=%s", "http://www.baidu.com", o.getOutTradeNo(), o.getTotalFee());
     }
 
@@ -59,7 +60,7 @@ public class CommonPayConfig {
      * 注意: 这是返回的页面跳转地址, 并不会覆盖结果通知地址
      */
     @Bean
-    Function<IOrder, String> aliPayWapReturnUrlGenerator() {
+    Function<IPayDTO, String> aliPayWapReturnUrlGenerator() {
         return o -> String.format("%s/a.html?o=%s&a=%s", "http://www.baidu.com", o.getOutTradeNo(), o.getTotalFee());
     }
 
@@ -67,8 +68,8 @@ public class CommonPayConfig {
      * 支付宝支付二维码访问地址生成器
      */
     @Bean
-    BiFunction<IOrder, String, String> aliPayPayQrCodeAccessUrlGenerator() {
-        return (order, content) -> {
+    BiFunction<IPayDTO, String, String> aliPayPayQrCodeAccessUrlGenerator() {
+        return (payDTO, content) -> {
             byte[] bytes = QrCodeUtil.generatePng(content, 300, 300);
             // 生成二维码后可以上传到ftp,或者oss, 然后返回访问链接就可以
             // 默认是生成文件在本地, 然后通过静态资源映射访问
@@ -82,8 +83,8 @@ public class CommonPayConfig {
      * 支付宝PC支付页面访问地址生成器
      */
     @Bean
-    BiFunction<IOrder, String, String> aliPayPcPayFormHtmlAccessUrlGenerator() {
-        return (order, content) -> {
+    BiFunction<IPayDTO, String, String> aliPayPcPayFormHtmlAccessUrlGenerator() {
+        return (payDTO, content) -> {
 //            AliPayConfig payConfig = GlobalConfig.getPayConfig(PayPlatform.ALI_PAY);
 //            String appHome = SpringUtil.appHome();
 //            FileUtil.writeString(content, appHome + "/cc/aa.html", payConfig.getCharset());
@@ -96,9 +97,9 @@ public class CommonPayConfig {
      * 支付宝WAP支付页面访问地址生成器
      */
     @Bean
-    BiFunction<IOrder, String, String> aliPayWapPayFormHtmlAccessUrlGenerator() {
+    BiFunction<IPayDTO, String, String> aliPayWapPayFormHtmlAccessUrlGenerator() {
         // 同上
-        return (order, content) -> "http://dwz.date/caVF";
+        return (payDTO, content) -> "http://dwz.date/caVF";
     }
 
     /**

@@ -18,13 +18,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class BalanceServiceImpl implements IBalanceService {
 
-
     /**
      * 模拟支付过程
      */
     @Override
-    public BalancePayRecord pay(LocalOrder localOrder) {
-
+    public BalancePayRecord pay(LocalOrder localOrder, String payPassword) {
+        if (!"123456".equals(payPassword)) {
+            throw new RuntimeException("支付密码错误");
+        }
         log.info("订单[{}]支付中, 扣减余额:[{}]", localOrder.getCode(), UnitUtil.convertFenToYuanStr(localOrder.getTotalFee()));
         ThreadUtil.sleep(3000);
 
@@ -37,4 +38,5 @@ public class BalanceServiceImpl implements IBalanceService {
         log.info("生成支付记录: [{}]", payRecord);
         return payRecord;
     }
+
 }

@@ -55,8 +55,8 @@ public class CommonPayConfig implements CommonPayConfigurer {
             aliPayConfig.setWapReturnUrlGenerator(o -> "http://www.baidu.com/xxx");
             aliPayConfig.setQrCodeWidth(300);
             aliPayConfig.setQrCodeHeight(300);
-            aliPayConfig.putExtend("扩展配置", "扩展配置的值");
-            aliPayConfig.putExtend("扩展配置2", "扩展配置2的值");
+            aliPayConfig.putExt("扩展配置", "扩展配置的值");
+            aliPayConfig.putExt("扩展配置2", "扩展配置2的值");
             return aliPayConfig;
         };
         // 设置支付宝配置提供器
@@ -80,8 +80,8 @@ public class CommonPayConfig implements CommonPayConfigurer {
             wxPayConfig.setWapReturnUrlGenerator(o -> "http://www.baidu.com/xxx");
             wxPayConfig.setQrCodeWidth(300);
             wxPayConfig.setQrCodeHeight(300);
-            wxPayConfig.putExtend("扩展配置", "扩展配置的值");
-            wxPayConfig.putExtend("扩展配置2", "扩展配置2的值");
+            wxPayConfig.putExt("扩展配置", "扩展配置的值");
+            wxPayConfig.putExt("扩展配置2", "扩展配置2的值");
             return wxPayConfig;
         };
         // 设置微信支付配置提供器

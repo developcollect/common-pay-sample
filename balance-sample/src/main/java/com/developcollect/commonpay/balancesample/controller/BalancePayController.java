@@ -27,6 +27,8 @@ public class BalancePayController {
     public PayResponse balancePay() {
         LocalOrder order = orderService.getOrder();
         OrderAdapter orderAdapter = new OrderAdapter(order);
+        // 放入支付密码
+        orderAdapter.putExt("PAY_CIPHER", "123465");
 
         PayResponse payResponse = PayUtil.paySync(LocalPayPlatform.BALANCE_PAY, orderAdapter);
 

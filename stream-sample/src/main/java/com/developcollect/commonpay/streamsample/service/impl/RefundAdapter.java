@@ -1,6 +1,6 @@
 package com.developcollect.commonpay.streamsample.service.impl;
 
-import com.developcollect.commonpay.pay.IRefund;
+import com.developcollect.commonpay.pay.IRefundDTO;
 import com.developcollect.commonpay.streamsample.entity.LocalRefund;
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 
  */
 @RequiredArgsConstructor
-public class RefundAdapter implements IRefund<LocalRefund> {
+public class RefundAdapter implements IRefundDTO<LocalRefund> {
 
     private final LocalRefund localRefund;
 

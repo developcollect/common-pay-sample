@@ -4,7 +4,7 @@ import com.developcollect.commonpay.balancesample.entity.BalancePayRecord;
 import com.developcollect.commonpay.balancesample.entity.LocalOrder;
 import com.developcollect.commonpay.balancesample.service.IBalanceService;
 import com.developcollect.commonpay.pay.AbstractPay;
-import com.developcollect.commonpay.pay.IOrder;
+import com.developcollect.commonpay.pay.IPayDTO;
 import com.developcollect.commonpay.pay.PayResponse;
 import lombok.RequiredArgsConstructor;
 
@@ -21,23 +21,24 @@ public class BalancePay extends AbstractPay {
     private final IBalanceService balanceService;
 
     @Override
-    public PayResponse paySync(IOrder order) {
+    public PayResponse paySync(IPayDTO payDTO) {
         // 1. 获取本地订单对象
-        Object source = order.getSource();
+        Object source = payDTO.getSource();
         if (!(source instanceof LocalOrder)) {
             throw new IllegalArgumentException("订单类错误");
         }
         LocalOrder localOrder = (LocalOrder) source;
 
         // 2. 调用本地余额支付方法
-        BalancePayRecord payRecord = balanceService.pay(localOrder);
+        String password = payDTO.getExt("PAY_CIPHER");
+        BalancePayRecord payRecord = balanceService.pay(localOrder, password);
 
         // 3. 封装PayResponse对象
         PayResponse payResponse = new PayResponse()
                 .setPayPlatform(LocalPayPlatform.BALANCE_PAY)
                 .setSuccess(true)
                 .setTradeNo(payRecord.getId().toString())
-                .setOutTradeNo(order.getOutTradeNo())
+                .setOutTradeNo(payDTO.getOutTradeNo())
                 .setPayTime(LocalDateTime.now())
                 .setRawObj(payRecord);
 

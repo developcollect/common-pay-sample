@@ -9,7 +9,7 @@ import com.developcollect.commonpay.streamsample.entity.LocalOrder;
 import com.developcollect.commonpay.streamsample.entity.LocalRefund;
 import com.developcollect.commonpay.streamsample.service.IOrderService;
 import com.developcollect.commonpay.streamsample.service.IRefundService;
-import com.developcollect.commonpay.streamsample.service.impl.OrderAdapter;
+import com.developcollect.commonpay.streamsample.service.impl.PayDTO;
 import com.developcollect.commonpay.streamsample.service.impl.RefundAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +40,7 @@ public class AliPayController {
     ) {
         LocalOrder localOrder = orderService.getOrder(orderCode);
         LocalRefund localRefund = refundService.createRefund(orderCode, amount);
-        OrderAdapter orderAdapter = OrderAdapter.of(localOrder);
+        PayDTO orderAdapter = PayDTO.of(localOrder);
         RefundAdapter refundAdapter = RefundAdapter.of(localRefund);
 
         RefundResponse refundResponse = PayUtil.refundSync(orderAdapter, refundAdapter);
@@ -52,7 +52,7 @@ public class AliPayController {
     public Map alipay() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String payForm = PayUtil.payPcForm(orderAdapter);
 
         Map map = new HashMap();
@@ -64,7 +64,7 @@ public class AliPayController {
     public Map alipay2() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String payForm = PayUtil.payPcFormAccessUrl(orderAdapter);
 
         Map map = new HashMap();
@@ -76,7 +76,7 @@ public class AliPayController {
     public Map alipay3() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String payForm = PayUtil.payQrCodeAccessUrl(orderAdapter);
 
         Map map = new HashMap();
@@ -88,7 +88,7 @@ public class AliPayController {
     public Map alipay4() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String payForm = PayUtil.payQrCode(orderAdapter);
 
         Map map = new HashMap();
@@ -100,7 +100,7 @@ public class AliPayController {
     public Map alipay5() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         String payForm = PayUtil.payQrCodeBase64(orderAdapter);
 
         Map map = new HashMap();
@@ -112,7 +112,7 @@ public class AliPayController {
     public Map alipay6() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.ALI_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        PayDTO orderAdapter = new PayDTO(order);
         PayResponse payResponse = PayUtil.paySync(orderAdapter);
 
         Map map = new HashMap();
