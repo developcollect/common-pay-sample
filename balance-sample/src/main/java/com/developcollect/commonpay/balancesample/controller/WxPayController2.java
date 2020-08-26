@@ -39,7 +39,7 @@ public class WxPayController2 {
     public Map wxpay3() {
         LocalOrder order = orderService.getOrderSpecifyAmount(1L);
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        OrderAdapter orderAdapter = OrderAdapter.of(order);
         String payForm = PayUtil.payQrCodeAccessUrl(orderAdapter);
 
         Map map = new HashMap();
@@ -51,7 +51,7 @@ public class WxPayController2 {
     public Map wxpay4() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        OrderAdapter orderAdapter = OrderAdapter.of(order);
         String payForm = PayUtil.payQrCode(orderAdapter);
 
         Map map = new HashMap();
@@ -63,7 +63,7 @@ public class WxPayController2 {
     public Map wxpay5() {
         LocalOrder order = orderService.getOrder();
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        OrderAdapter orderAdapter = OrderAdapter.of(order);
         String payForm = PayUtil.payQrCodeBase64(orderAdapter);
 
         Map map = new HashMap();
@@ -75,7 +75,7 @@ public class WxPayController2 {
     public Map wxpay6() {
         LocalOrder order = orderService.getOrderSpecifyAmount(1);
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        OrderAdapter orderAdapter = OrderAdapter.of(order);
         PayWxJsResult payWxJsResult = PayUtil.payWxJs(orderAdapter, openId);
 
         Map map = new HashMap();
@@ -87,7 +87,7 @@ public class WxPayController2 {
     public Map wxpay7() {
         LocalOrder order = orderService.getOrderSpecifyAmount(1);
         order.setPayType(PayPlatform.WX_PAY);
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        OrderAdapter orderAdapter = OrderAdapter.of(order);
         String s = PayUtil.payWapFormAccessUrl(orderAdapter);
 
         Map map = new HashMap();

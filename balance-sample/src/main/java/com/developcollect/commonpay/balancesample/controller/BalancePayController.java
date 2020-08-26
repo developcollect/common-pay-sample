@@ -26,7 +26,7 @@ public class BalancePayController {
     @GetMapping("/balancePay")
     public PayResponse balancePay() {
         LocalOrder order = orderService.getOrder();
-        OrderAdapter orderAdapter = new OrderAdapter(order);
+        OrderAdapter orderAdapter = OrderAdapter.of(order);
         // 放入支付密码
         orderAdapter.putExt("PAY_CIPHER", "123465");
 

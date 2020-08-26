@@ -5,7 +5,7 @@ import com.developcollect.commonpay.autoconfig.CommonPayProperties;
 import com.developcollect.commonpay.notice.IPayBroadcaster;
 import com.developcollect.commonpay.pay.IPayDTO;
 import com.developcollect.commonpay.streamsample.config.mq.PaySource;
-import com.developcollect.commonpay.utils.SerializeUtil;
+import com.developcollect.dcinfra.utils.SerializeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

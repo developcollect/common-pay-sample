@@ -2,7 +2,6 @@ package com.developcollect.commonpay.balancesample.config.commonpay;
 
 import com.developcollect.commonpay.balancesample.entity.LocalOrder;
 import com.developcollect.commonpay.pay.IPayDTO;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -11,10 +10,9 @@ import java.time.LocalDateTime;
  * @version 1.0
  * @date 2020/8/7 16:30
  */
-@RequiredArgsConstructor
 public class OrderAdapter implements IPayDTO<LocalOrder> {
 
-    private final LocalOrder localOrder;
+    private LocalOrder localOrder;
 
 
     @Override
@@ -54,7 +52,9 @@ public class OrderAdapter implements IPayDTO<LocalOrder> {
 
 
     public static OrderAdapter of(LocalOrder localOrder) {
-        return new OrderAdapter(localOrder);
+        OrderAdapter orderAdapter = new OrderAdapter();
+        orderAdapter.localOrder = localOrder;
+        return orderAdapter;
     }
 
 }

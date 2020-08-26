@@ -6,7 +6,7 @@ import com.developcollect.commonpay.pay.PayResponse;
 import com.developcollect.commonpay.streamsample.config.mq.PaySource;
 import com.developcollect.commonpay.streamsample.entity.LocalOrder;
 import com.developcollect.commonpay.streamsample.service.IOrderService;
-import com.developcollect.commonpay.utils.SerializeUtil;
+import com.developcollect.dcinfra.utils.SerializeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.context.event.EventListener;

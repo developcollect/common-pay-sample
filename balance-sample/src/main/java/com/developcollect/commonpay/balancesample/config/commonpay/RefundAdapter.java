@@ -2,17 +2,15 @@ package com.developcollect.commonpay.balancesample.config.commonpay;
 
 import com.developcollect.commonpay.balancesample.entity.LocalRefund;
 import com.developcollect.commonpay.pay.IRefundDTO;
-import lombok.RequiredArgsConstructor;
 
 /**
  * @author zak
  * @version 1.0
  * @date 2020/8/10 14:33
  */
-@RequiredArgsConstructor
 public class RefundAdapter implements IRefundDTO<LocalRefund> {
 
-    private final LocalRefund localRefund;
+    private LocalRefund localRefund;
 
     @Override
     public String getOutRefundNo() {
@@ -35,6 +33,8 @@ public class RefundAdapter implements IRefundDTO<LocalRefund> {
     }
 
     public static RefundAdapter of(LocalRefund localRefund) {
-        return new RefundAdapter(localRefund);
+        RefundAdapter refundAdapter = new RefundAdapter();
+        refundAdapter.localRefund = localRefund;
+        return refundAdapter;
     }
 }
