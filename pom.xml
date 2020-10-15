@@ -32,7 +32,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
-        <common-pay-spring-boot-starter.version>2.0.1</common-pay-spring-boot-starter.version>
+        <common-pay-spring-boot-starter.version>2.1.0</common-pay-spring-boot-starter.version>
     </properties>
 
 
